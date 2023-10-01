@@ -12,5 +12,6 @@ class Vacina extends Model
         'nome',
         'email_usuario',
         'data_aplicacao',
+        'name_aplicador',
     ];
 }
