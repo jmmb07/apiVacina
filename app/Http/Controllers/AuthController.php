@@ -19,8 +19,6 @@ use Illuminate\Support\Facades\Request;
  * )
  */
 
-
-
 class AuthController extends Controller
 {
     
