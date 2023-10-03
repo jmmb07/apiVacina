@@ -35,7 +35,23 @@ class UserController extends Controller
             ]
         );
     }
-    
+
+    /**
+     * @OA\Get(
+     *     path="/api/usuarios",
+     *     tags={"Usuários"},
+     *     summary="Obter todos os usuários cadastrados na base.",
+     *     description="Retorna uma lista de todos os usuários cadastrados na base de dados.",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Sucesso. Retorna a lista de usuários cadastrados.",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#app/Http/Controllers/")
+     *         )
+     *     )
+     * )
+     */
     public function usuarioIndex(Request $request)
     {
         $response = $this->userService->getUsuarios();

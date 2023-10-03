@@ -87,6 +87,31 @@
                     }
                 }
             }
+        },
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuários"
+                ],
+                "summary": "Obter todos os usuários cadastrados na base.",
+                "description": "Retorna uma lista de todos os usuários cadastrados na base de dados.",
+                "operationId": "b75c00615a27a58757658ca33dedf04a",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso. Retorna a lista de usuários cadastrados.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#app/Http/Controllers/"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
