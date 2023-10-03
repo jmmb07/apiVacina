@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Api Vacina",
+ *      description="Descricao",
+ *      @OA\Contact(
+ *          email="joao_borgato@hotmail.com"
+ *      ),
+ * )
+ */
+
+
+
 class AuthController extends Controller
 {
     
@@ -25,9 +38,37 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @OA\Post(
+     *     path="/api/login",
+     *     tags={"Autenticação"},
+     *     summary="Obter um JWT com base nas credenciais fornecidas.",
+     *     description="Autentica um usuário e retorna um JSON Web Token (JWT) se as credenciais forem válidas.",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="Dados de autenticação do usuário",
+     *         @OA\JsonContent(
+     *             required={"email", "password"},
+     *             @OA\Property(property="email", type="string", format="email", example="usuario@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="senha123")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Sucesso. Retorna um JWT.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="access_token", type="string", description="Token de acesso JWT"),
+     *             @OA\Property(property="token_type", type="string", description="Tipo de token (Bearer)"),
+     *             @OA\Property(property="expires_in", type="integer", description="Tempo de expiração do token em segundos")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Credenciais inválidas. Falha na autenticação.",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", description="Mensagem de erro")
+     *         )
+     *     )
+     * )
      */
     public function login()
     {
